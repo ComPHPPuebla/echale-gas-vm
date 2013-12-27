@@ -1,0 +1,119 @@
+---
+vagrantfile-local:
+    vm:
+        box: echalegas32
+        box_url: 'http://files.vagrantup.com/precise32.box'
+        hostname: null
+        network:
+            private_network: 192.168.56.101
+            forwarded_port:
+                S76xSdd8dOK5:
+                    host: ''
+                    guest: ''
+        provider:
+            virtualbox:
+                modifyvm:
+                    name: echalegas
+                    natdnshostresolver1: on
+                    memory: '1024'
+                setextradata:
+                    VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
+        provision:
+            puppet:
+                manifests_path: puppet/manifests
+                options:
+                    - --verbose
+                    - '--hiera_config /vagrant/hiera.yaml'
+                    - '--parser future'
+        synced_folder:
+            ubuntu32:
+                id: vagrant-root
+                source: ./
+                target: /var/www
+                nfs: 'false'
+        usable_port_range: 2200..2250
+    ssh:
+        host: null
+        port: null
+        private_key_path: null
+        username: vagrant
+        guest_port: null
+        keep_alive: true
+        forward_agent: false
+        forward_x11: false
+        shell: 'bash -l'
+    vagrant:
+        host: ':detect'
+server:
+    packages:
+        - build-essential
+        - vim
+        - curl
+        - git-core
+    dot_files:
+        -
+            bash_aliases: null
+apache:
+    modules:
+        - php
+        - rewrite
+        - headers
+    vhosts:
+        echalegas:
+            servername: echalegas.dev
+            docroot: /var/www/echale-gas-app/public
+            port: '80'
+            override:
+                - All
+        echalegasapi:
+            servername: api.echalegas.dev
+            docroot: /var/www/echale-gas-api/public
+            port: '80'
+            override:
+                - All
+    user: vagrant
+    group: vagrant
+    default_vhost: true
+    mpm_module: prefork
+php:
+    version: '54'
+    composer: '1'
+    modules:
+        php:
+            - cli
+            - curl
+            - intl
+            - mcrypt
+            - sqlite
+        pear: {  }
+        pecl: {  }
+    ini:
+        display_errors: On
+        error_reporting: '-1'
+        phar.readonly: Off
+        phar.require_hash: On
+    timezone: America/Mexico_City
+xdebug:
+    install: '1'
+    settings:
+        xdebug.default_enable: '1'
+        xdebug.remote_autostart: '0'
+        xdebug.remote_connect_back: '1'
+        xdebug.remote_enable: '1'
+        xdebug.remote_handler: dbgp
+        xdebug.remote_port: '9000'
+        xdebug.remote_log: '/tmp/php5-xdebug.log'
+        xdebug.show_local_vars: '1'
+mysql:
+    root_password: root
+    phpmyadmin: 0
+    databases:
+        echalegas:
+            grant:
+                - ALL
+            name: echalegas
+            host: localhost
+            user: echalegasuser
+            password: 3chal3g4sus3r!
+            sql_file: ''
+
