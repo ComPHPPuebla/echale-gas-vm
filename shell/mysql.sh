@@ -8,3 +8,4 @@ sed -i "/skip/s/^/#/" /etc/mysql/my.cnf
 sed -i "/bind/s/^/#/" /etc/mysql/my.cnf
 
 service mysql restart
+

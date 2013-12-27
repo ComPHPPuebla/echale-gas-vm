@@ -6,5 +6,4 @@ cp /vagrant/files/dot/.ssh/config /home/vagrant/.ssh/config && chown vagrant /ho
 chgrp -R vagrant /home/vagrant
 
 apt-get install -y ack-grep
-apt-get install -y php5-sqlite
 

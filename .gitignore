@@ -1,0 +1,6 @@
+/files/dot/.ssh
+/.vagrant/
+/dbal-fixtures/
+/echale-gas-api/
+/echale-gas-app/
+/restful-extensions/
