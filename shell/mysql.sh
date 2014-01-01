@@ -9,3 +9,8 @@ sed -i "/bind/s/^/#/" /etc/mysql/my.cnf
 
 service mysql restart
 
+sudo apt-get install -y sqlite
+
+echo "Installing Composer global packages..."
+sudo su -l vagrant -c 'composer global require fabpot/php-cs-fixer:0.3.*'
+sudo su -l vagrant -c 'echo "PATH=$PATH:$HOME/.composer/vendor/bin" >> ~/.bashrc'

@@ -1,5 +1,6 @@
 /files/dot/.ssh
 /.vagrant/
+/.metadata/
 /dbal-fixtures/
 /echale-gas-api/
 /echale-gas-app/
