@@ -1,6 +1,6 @@
 # Máquina Virtual para Échale Gas
 
-Máquina virtual para el proyecto [Échale Gas](http://echalegas.comunidadphppuebla.com/) 
+Máquina virtual para el proyecto [Échale Gas](https://github.com/ComPHPPuebla/echale-gas-api) 
 creado durante el
 [Hackathón de Datos y Gobierno Abierto Puebla 2013](https://www.facebook.com/OpenDataPuebla).
 
